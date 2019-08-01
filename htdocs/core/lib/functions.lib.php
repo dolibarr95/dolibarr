@@ -2520,6 +2520,13 @@ function dol_print_phone($phone, $countrycode = '', $cid = 0, $socid = 0, $addli
 			$newphone = substr($newphone, 0, 3).$separ.substr($newphone, 3, 1).$separ.substr($newphone, 4, 4).$separ.substr($newphone, 8, 4);
 		}
 	}
+	elseif (strtoupper($parameters['countrycode']) == "JM")
+	{//Jamaïque
+		if(dol_strlen($newphone) == 12)
+		{//ex: +1867_ABC_DEFG
+			$newphone = substr($newphone,0,5).$separ.substr($newphone,5,3).$separ.substr($newphone,8,4);
+		}	
+	}
 	if (! empty($addlink))	// Link on phone number (+ link to add action if conf->global->AGENDA_ADDACTIONFORPHONE set)
 	{
 		if ($conf->browser->layout == 'phone' || (! empty($conf->clicktodial->enabled) && ! empty($conf->global->CLICKTODIAL_USE_TEL_LINK_ON_PHONE_NUMBERS)))	// If phone or option for, we use link of phone
