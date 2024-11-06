@@ -173,7 +173,12 @@ class Contact extends CommonObject
 	 * @var string Name alias
 	 */
 	public $name_alias;
-
+	
+	/**
+	 * @var string House number
+	 */
+	public housenum;
+	
 	/**
 	 * @var string Address
 	 */
@@ -647,6 +652,7 @@ class Contact extends CommonObject
 		$sql .= ", name_alias='".$this->db->escape($this->name_alias)."'";
 		$sql .= ", lastname='".$this->db->escape($this->lastname)."'";
 		$sql .= ", firstname='".$this->db->escape($this->firstname)."'";
+		$sql .= ", housenum='".$this->db->escape($this->housenum)."'";
 		$sql .= ", address='".$this->db->escape($this->address)."'";
 		$sql .= ", zip='".$this->db->escape($this->zip)."'";
 		$sql .= ", town='".$this->db->escape($this->town)."'";
@@ -711,6 +717,10 @@ class Contact extends CommonObject
 				}
 				if ($tmpobj->office_fax != $this->fax) {
 					$tmpobj->office_fax = $this->fax;
+					$usermustbemodified++;
+				}
+				if ($tmpobj->housenum != $this->housenum) {
+					$tmpobj->housenum = $this->housenum;
 					$usermustbemodified++;
 				}
 				if ($tmpobj->address != $this->address) {
@@ -1020,7 +1030,7 @@ class Contact extends CommonObject
 		$langs->loadLangs(array("dict", "companies"));
 
 		$sql = "SELECT c.rowid, c.entity, c.fk_soc, c.ref_ext, c.civility as civility_code, c.name_alias, c.lastname, c.firstname,";
-		$sql .= " c.address, c.statut, c.zip, c.town,";
+		$sql .= " c.housenum, c.address, c.statut, c.zip, c.town,";
 		$sql .= " c.fk_pays as country_id,";
 		$sql .= " c.fk_departement as state_id,";
 		$sql .= " c.birthday,";
@@ -1078,6 +1088,7 @@ class Contact extends CommonObject
 				$this->name_alias	= $obj->name_alias;
 				$this->lastname		= $obj->lastname;
 				$this->firstname	= $obj->firstname;
+				$this->housenum		= $obj->housenum;
 				$this->address		= $obj->address;
 				$this->zip			= $obj->zip;
 				$this->town			= $obj->town;
