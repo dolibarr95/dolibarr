@@ -69,11 +69,12 @@ class Menu
 	 * @param	string	$idsel		Id sel
 	 * @param	string	$classname	Class name
 	 * @param	string	$prefix		Prefix to title (image or picto)
+  	 * @param   string	$titredesc  Advisory information related to the link (title attribute). The value must already be translated.
 	 * @return	void
 	 */
-	public function add($url, $titre, $level = 0, $enabled = 1, $target = '', $mainmenu = '', $leftmenu = '', $position = 0, $id = '', $idsel = '', $classname = '', $prefix = '')
+	public function add($url, $titre, $level = 0, $enabled = 1, $target = '', $mainmenu = '', $leftmenu = '', $position = 0, $id = '', $idsel = '', $classname = '', $prefix = '', $titredesc = '')
 	{
-		$this->liste[] = array('url' => $url, 'titre' => $titre, 'level' => $level, 'enabled' => $enabled, 'target' => $target, 'mainmenu' => $mainmenu, 'leftmenu' => $leftmenu, 'position' => $position, 'id' => $id, 'idsel' => $idsel, 'classname' => $classname, 'prefix' => $prefix);
+		$this->liste[] = array('url' => $url, 'titre' => $titre, 'level' => $level, 'enabled' => $enabled, 'target' => $target, 'mainmenu' => $mainmenu, 'leftmenu' => $leftmenu, 'position' => $position, 'id' => $id, 'idsel' => $idsel, 'classname' => $classname, 'prefix' => $prefix, '$titredesc' => $titredesc);
 	}
 
 	/**
